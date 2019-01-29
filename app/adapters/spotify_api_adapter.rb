@@ -4,6 +4,8 @@ class SpotifyApiAdapter
         {
             "auth" => "https://accounts.spotify.com/api/token",
             "me" => "https://api.spotify.com/v1/me",
+            "is_fallowing" => "https://api.spotify.com/v1/me/following/contains",
+            "artists_fallowing" => "https://api.spotify.com/v1/me/following",
         }
     end
 
@@ -30,6 +32,16 @@ class SpotifyApiAdapter
         }
 
         user_response = RestClient.get(urls["me"], header)
+
+        JSON.parse(user_response.body)
+    end
+
+    def self.getUserFallowing(access_token)
+        header = {
+            "Authorization": "Bearer #{access_token}"
+        }
+
+        user_response = RestClient.get(urls["artists_fallowing"], header)
 
         JSON.parse(user_response.body)
     end
