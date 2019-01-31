@@ -1,50 +1,51 @@
+# frozen_string_literal: true
+
+# This class that makes connection with api spotify
 class SpotifyApiAdapter
-    
-    def self.urls
-        {
-            "auth" => "https://accounts.spotify.com/api/token",
-            "me" => "https://api.spotify.com/v1/me",
-            "is_fallowing" => "https://api.spotify.com/v1/me/following/contains",
-            "artists_fallowing" => "https://api.spotify.com/v1/me/following",
-        }
-    end
+  def self.urls
+    {
+      'auth': 'https://accounts.spotify.com/api/token',
+      'me': 'https://api.spotify.com/v1/me',
+      'artists_fallowing': 'api.spotify.com/v1/me/following?type=artist&limit='
 
-    def self.body_params
-        body = {
-            client_id: ENV['CLIENT_ID'],
-            client_secret: ENV["CLIENT_SECRET"]
-        }
-    end
+    }
+  end
 
-    def self.login(code)
-        body = body_params.dup
-        body[:grant_type] = "authorization_code"
-        body[:code] = code
-        body[:redirect_uri] = ENV['REDIRECT_URI']
+  def self.body_params
+    {
+      client_id: ENV['CLIENT_ID'],
+      client_secret: ENV['CLIENT_SECRET']
+    }
+  end
 
-        auth_response = RestClient.post(urls["auth"], body)
-        JSON.parse(auth_response.body)
-    end
+  def self.login(code)
+    body = body_params.dup
+    body[:grant_type] = 'authorization_code'
+    body[:code] = code
+    body[:redirect_uri] = ENV['REDIRECT_URI']
 
-    def self.getUserData(access_token)
-        header = {
-            "Authorization": "Bearer #{access_token}"
-        }
+    auth_response = RestClient.post(urls['auth'], body)
+    JSON.parse(auth_response.body)
+  end
 
-        user_response = RestClient.get(urls["me"], header)
+  def self.get_user_data(access_token)
+    header = {
+      "Authorization": "Bearer #{access_token}"
+    }
 
-        JSON.parse(user_response.body)
-    end
+    user_response = RestClient.get(urls['me'], header)
 
-    def self.getUserFallowing(access_token)
-        header = {
-            "Authorization": "Bearer #{access_token}"
-        }
+    JSON.parse(user_response.body)
+  end
 
-        user_response = RestClient.get(urls["artists_fallowing"], header)
+  def self.get_user_fallowing(token, limit = 0)
+    header = {
+      "Authorization": "Bearer #{token}"
+    }
+    limit = limit >= 50 ? 50 : limit
 
-        JSON.parse(user_response.body)
-    end
+    resp = RestClient.get(urls['artists_fallowing'] + limit.to_s, header)
 
-
+    JSON.parse(resp.body)
+  end
 end
