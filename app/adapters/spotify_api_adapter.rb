@@ -4,9 +4,9 @@
 class SpotifyApiAdapter
   def self.urls
     {
-      'auth': 'https://accounts.spotify.com/api/token',
-      'me': 'https://api.spotify.com/v1/me',
-      'artists_fallowing': 'api.spotify.com/v1/me/following?type=artist&limit='
+      'auth'=> 'https://accounts.spotify.com/api/token',
+      'me' => 'https://api.spotify.com/v1/me',
+      'artists_fallowing' => 'api.spotify.com/v1/me/following?type=artist&limit='
 
     }
   end
