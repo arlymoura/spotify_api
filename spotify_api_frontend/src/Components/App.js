@@ -5,6 +5,8 @@ import Login from "./Login"
 import Auth from "../Adapters/Auth"
 import {Route, withRouter} from "react-router-dom"
 import './App.css';
+import '../index.scss';
+import './Porfile.scss';
 
 class App extends Component {
   
