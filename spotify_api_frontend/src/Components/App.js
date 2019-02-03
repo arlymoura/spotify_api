@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
+import {Route, withRouter} from "react-router-dom"
+import { Container, Row, Col } from 'reactstrap';
 import Callback from "./Callback"
 import Profile from "./Profile"
 import Login from "./Login"
 import Auth from "../Adapters/Auth"
-import {Route, withRouter} from "react-router-dom"
 import './App.css';
 import '../index.scss';
 import './Porfile.scss';
+
+
+
 
 class App extends Component {
   
@@ -33,13 +37,40 @@ class App extends Component {
   render() {
     
     return (
-      <div className="App">
-        <h1>SPOTIFY API</h1>
-        <br/>
-        <Login currentUser={this.state.currentUser}/>
-        <Route exact path="/callback" component={this.handleCallback} />
-        <Route exact path="/profile" component={this.renderProfile} />
+      <div>
+      <Container>
+        <Row>
+          <Col xs="12">
+          <div class="header">
+            <div class="inner">
+             <div class="user-ui">
+                <div class="user-menu-toggle"></div>
+             </div>
+            </div>
+            <br/>
+            
+          </div>
+          </Col>
+        </Row>
+        <Row>
+          <Col xs="12">
+            <h1  className="App">SPOTIFY API</h1>
+          </Col>
+        </Row>
+                    
+        <Row>
+          <Col xs="12">
+            <Login currentUser={this.state.currentUser}/>
+            <Route exact path="/callback" component={this.handleCallback} />
+          </Col>
+        </Row>
+        <Row>
+          <br/>
+          <Route exact path="/profile" component={this.renderProfile} />
+        </Row>
+      </Container>
       </div>
+      
     );
   }
 }

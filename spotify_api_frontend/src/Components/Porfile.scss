@@ -20,11 +20,11 @@ $softgrey:#ddd;
 // }
 
   
-body, html {
+/* body, html {
   margin:0;
   padding:0;
   font-family:"Raleway";
-}
+} */
 
 
 // Just abit of the UI CSS
@@ -62,200 +62,90 @@ body, html {
   background:$primary;
   border-bottom:1px solid $grey;
 	line-height: 80px!important;
+	margin-left: 0px;
+	margin-right: 0px;
+	padding-right: 0px;
+	padding-left: 0px;
+}
+
   
-  .inner {
-    width:90%;
-    margin:0 auto;
-    position:relative;
-  }
-  
-	.user-ui {
-		position: absolute;
-		right: 0;
-		display: inline-block;
+
+
+/* Profile container 
+.profile {
+  margin: 20px 0;
+}
+*/
+
+/* Profile sidebar */
+.profile-sidebar {
+  padding: 20px 0 10px 0;
+  background: #fff;
+}
+
+.profile-userpic img {
+  float: none;
+  margin: 0 0 0 15%;
+  width: 80%;
+  height: 80%;
+  -webkit-border-radius: 50% !important;
+  -moz-border-radius: 50% !important;
+  border-radius: 50% !important;
+}
+
+.profile-usertitle {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.profile-usertitle-name {
+  color: #5a7391;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 7px;
+}
+
+.profile-usertitle-job {
+  text-transform: uppercase;
+  color: #5b9bd1;
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.profile-userbuttons {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.profile-userbuttons .btn {
+  text-transform: uppercase;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 6px 15px;
+  margin-right: 5px;
+}
+
+.profile-userbuttons .btn:last-child {
+  margin-right: 0px;
+}
     
-		.user-menu-toggle {
-			display: inline-block;
-			vertical-align: middle;
-        cursor:pointer;
-	
-			.profile-img {
-				width: 35px;
-				height: 35px;
-				display: inline-block;
-				vertical-align: middle;
-				//@include border-radius(50%);
-				background-size: cover;
-			}
+.profile-usermenu {
+  margin-top: 30px;
+}
 
-			.simple-arrow {
-				display: inline-block;
-				vertical-align: middle;
-				margin: 0 5px;
-				font-size: 12px;
-				color:$white;
-			}
-		}
+.profile-usermenu ul li {
+  border-bottom: 1px solid #f0f4f7;
+}
 
-		.sign-out-icon {
-			display: inline-block;
-			vertical-align: middle;
-			font-size: 20px;
-			color:$white;
-			margin-left: 20px;
-
-			&:hover {
-				color:$secondary
-			}
-		}
-
-		.user-menu {
-
-			&::after {
-
-				display: block;
-				right: 0;
-				content: " ";
-				height: 0;
-				top:-10px;
-				width: 0;
-				position: absolute;
-				border-left: 10px solid transparent;
-				border-right: 10px solid transparent;
-				border-bottom: 10px solid #f9f9f9;
-			}
-
-			&::before {
+.profile-usermenu ul li:last-child {
+  border-bottom: none;
+}
 
 
-				display: block;
-				right: -1px;
-				content: " ";
-				height: 0;
-				top: -11px;
-				width: 0;
-				position: absolute;
-				border-left: 11px solid transparent;
-				border-right: 11px solid transparent;
-				border-bottom: 11px solid $white;
-			}
-			width: 300px;
-			background: #f9f9f9;
-			position: absolute;
-			right: 40%;
-			border:1px solid $white;
-			//@include border-radius(2px);
-
-
-
-			.user-info {
-
-				border-bottom: 1px solid $white;
-				padding: 0px 10px;
-				position: relative;
-				
-				.profile-img {
-
-					width: 45px;
-					height: 45px;
-					display: inline-block;
-					vertical-align: middle;
-					//@include border-radius(50%);
-					background-size: cover;
-				}
-
-				h3 {
-					display: inline-block;
-					vertical-align: middle;
-					margin: 0;
-					color:$grey;
-					font-weight: normal;
-					line-height: normal;
-					font-size: 15px;
-					padding-left:20px;
-
-				}
-
-				.btn {
-					display: inline-block;
-					vertical-align: middle;
-					font-size: 12px;
-					position: absolute;
-					right: 10px;
-					top:50%;
-					//@include translateY(-50%);
-				}
-			}
-
-			.invites-info {
-				border:1px solid $white;
-				padding: 10px;
-				height: 110px;
-				display: block;
-				.next-invite-bar  {
-					height: 20px;
-					background: $softgrey;
-					border:1px solid #fff;
-				//@include border-radius(20px);
-					position: relative;
-					.progress {
-						position: absolute;
-						top: 0;
-						left: 0;
-						//@include border-radius(20px 0px 0px 20px);
-						background: $secondary;
-						height: 100%;
-					}
-				}
-				span {
-					margin: 0;
-					padding: 5px 0;
-					color:$softgrey;
-					font-size: 12.5px;
-					line-height: normal!important;
-					display: block;
-				}
-				p {
-					font-size: 14px;
-					line-height: normal;
-					color:$grey;
-					float: left;
-					margin: 18px 0;
-				}
-		
-				.btn {
-					float: right;
-					font-size: 12px;
-					margin: 5px 0;
-
-				}
-			}
-
-
-			.menu-nav {
-
-				list-style-type: none;
-
-				li {
-					padding: 15px 10px;
-					line-height: normal;
-					color:$grey;
-					border-bottom: 1px solid $white;
-					cursor: pointer;
-
-					span {
-						width: 20px;
-						margin-right: 10px;
-						text-align: center;
-					}
-
-					&:hover {
-						background: $white;
-						color:$secondary ;
-					}
-				}
-
-			}
-		}
-	}
+/* Profile Content */
+.profile-content {
+  padding: 20px;
+  background: #fff;
+  min-height: 460px;
 }

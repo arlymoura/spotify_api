@@ -8,7 +8,7 @@ export default class Artist extends React.Component {
 				mouseOver: false
 			};
 			// Bind properties to class instance
-			this._clickHandler = this._clickHandler.bind(this);
+			//this._clickHandler = this._clickHandler.bind(this);
 			this._mouseEnter = this._mouseEnter.bind(this);
 			this._mouseLeave = this._mouseLeave.bind(this);
 		}
@@ -28,18 +28,6 @@ export default class Artist extends React.Component {
 			this.setState({
 				mouseOver: false
 			})
-		}
-	}
-	_clickHandler(e) {
-		e.preventDefault();
-		if (this.state.open === false) {
-			this.setState({
-				open: true
-			});
-		} else {
-			this.setState({
-				open: false
-			});
 		}
 	}
 
@@ -71,14 +59,15 @@ export default class Artist extends React.Component {
 
 		return (
 			<div className="tile">
-				<img
-					onMouseEnter={this._mouseEnter}
-					onMouseLeave={this._mouseLeave}
-					onClick={this._clickHandler}
-					src={this.props.data.img_mid_url}
-					alt={this.props.data.display_name}
-					style={artistStyle}
-				/>
+        <a href={this.props.data.spotify_url}>
+          <img
+            onMouseEnter={this._mouseEnter}
+            onMouseLeave={this._mouseLeave}
+            src={this.props.data.img_mid_url}
+            alt={this.props.data.display_name}
+            style={artistStyle}
+          />
+        </a>
 			</div>
 		);
 	}

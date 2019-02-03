@@ -1,11 +1,15 @@
 import React from 'react';
+import { Button, Col, Row } from 'reactstrap';
 
 const Login = ({currentUser}) => {
   if (!currentUser.id) {
     return(
-      <a className="login-a" href="http://localhost:3000/api/v1/auth">
-        LOGIN
-      </a>
+      <Row>
+        <Col xs="12">
+          <Button href="http://localhost:3000/api/v1/auth"  color="success"
+           className="buttonCenter">Click Para  Conntinuar ...</Button>
+        </Col>
+      </Row>
     )
   }
    return null

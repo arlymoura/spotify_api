@@ -1,5 +1,6 @@
 import React from 'react';
 import Artist from "./Artist"
+import { Row, Col } from 'reactstrap';
 
  export default class Following extends React.Component {
 	constructor() {
@@ -48,13 +49,14 @@ import Artist from "./Artist"
         const renderPageNumbers = pageNumbers.map(number => {
           return (
 						
-            <a className={(currentPage === number) ? 'active' : ''}
-						  key={number}
-              id={number}
-              onClick={this.handleClick}
-            >
-              {number}
-            </a>
+								<a className={(currentPage === number) ? 'active' : ''}
+									key={number}
+									id={number}
+									onClick={this.handleClick}
+								>
+									{number}
+								</a>
+							
           );
         }); 
 				
@@ -63,7 +65,11 @@ import Artist from "./Artist"
 				<div className="tiles">
 					{renderTodos}
 					<div id="page-numbers" className="pagination">
-              {renderPageNumbers}
+						<Row>
+								<Col  sm="12" md={{ size: 6, offset: 3 }}>
+									{renderPageNumbers}
+								</Col>
+						</Row>
           </div>
 				</div>
 				);
