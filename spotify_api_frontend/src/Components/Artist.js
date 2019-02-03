@@ -64,7 +64,8 @@ export default class Artist extends React.Component {
             onMouseEnter={this._mouseEnter}
             onMouseLeave={this._mouseLeave}
             src={this.props.data.img_mid_url}
-            alt={this.props.data.display_name}
+						alt={this.props.data.display_name}
+						target="_blank"
             style={artistStyle}
           />
         </a>

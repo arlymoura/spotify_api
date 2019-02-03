@@ -34,18 +34,21 @@ class Api::V1::UsersController < ApplicationController
 
   def nested_artists(artist_data, usr)
     artist_data.map do |data|
-      Artist.find_or_create_by(
-        display_name: data['name'],
-        spotify_id: data['id'],
-        spotify_url: data['external_urls']['spotify'],
-        genere: data['generes'],
-        followers_count: data['followers']['total'],
-        img_big_url: get_img(data['images'][0]),
-        img_mid_url: get_img(data['images'][1]),
-        img_small_url: get_img(data['images'][2]),
-        user: usr
-      )
+      usr.artists.build(extract_artist(data))
     end
+  end
+
+  def extract_artist(data)
+    {
+      display_name: data['name'],
+      spotify_id: data['id'],
+      spotify_url: data['external_urls']['spotify'],
+      genere: data['generes'],
+      followers_count: data['followers']['total'],
+      img_big_url: get_img(data['images'][0]),
+      img_mid_url: get_img(data['images'][1]),
+      img_small_url: get_img(data['images'][2])
+    }
   end
 
   def get_img(img)

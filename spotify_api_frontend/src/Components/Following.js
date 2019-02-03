@@ -23,9 +23,11 @@ import { Row, Col } from 'reactstrap';
 
 		if (this.props.data === undefined) {
 				// Render loading UI
+				
 				return ("");
 			} else {
-			 	const todos = this.props.data;
+				let todos = {};
+				todos = this.props.data;
 				const { currentPage, todosPerPage } = this.state;
 				
         // Logic for displaying current todos
@@ -66,7 +68,7 @@ import { Row, Col } from 'reactstrap';
 					{renderTodos}
 					<div id="page-numbers" className="pagination">
 						<Row>
-								<Col  sm="12" md={{ size: 6, offset: 3 }}>
+								<Col  sm="12" md={{ size: 12, offset: 1 }}>
 									{renderPageNumbers}
 								</Col>
 						</Row>
